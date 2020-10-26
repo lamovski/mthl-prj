@@ -1,0 +1,41 @@
+def one(file):
+    l = []
+    for line in file:
+        n = int(line)
+        l.append(n)
+    s = set(l)
+
+    print(len(s))
+
+def two(file):
+    l = file.readline().split(' ')
+    s = set()
+    for i in l:
+        if s.__contains__(i):
+            print("NO")
+        else:
+            print("YES")
+        s.add(i)
+
+def three(file):
+    s = set()
+    for line in file:
+        s |= set(line.split(' '))
+    print(s)
+    print(len(s))
+
+try:
+    file = open(input(), "r")
+    num = int(input("Использовать программу номер:"))
+    if num == 1:
+        one(file)
+    elif num == 2:
+        two(file)
+    elif num == 3:
+        three(file)
+except FileNotFoundError:
+    print('Файл не найден')
+except Exception:
+    print('Что-то пошло не так')
+finally:
+    file.close()
